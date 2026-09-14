@@ -1,4 +1,4 @@
-@CounterApi_HostAddress = http://localhost:5015
+@CounterApi_HostAddress = http://localhost:5007
 
 GET {{CounterApi_HostAddress}}/weatherforecast/
 Accept: application/json
