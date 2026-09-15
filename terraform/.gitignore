@@ -1,0 +1,17 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# VSCode
+.vscode/
+
+# Node
+frontend/node_modules/
+
+# Dotnet
+**/bin/
+**/obj/
+
+# Docker
+.env

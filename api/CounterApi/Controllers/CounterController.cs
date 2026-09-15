@@ -36,24 +36,25 @@ public class CounterController : ControllerBase
     }
 
     [HttpPost("increment")]
-    public async Task<IActionResult> Increment()
+public async Task<IActionResult> Increment()
+{
+    var counter = await _db.Counters.FirstOrDefaultAsync();
+
+    if (counter == null)
     {
-        var counter = await _db.Counters.FirstOrDefaultAsync();
-
-        if (counter == null)
+        counter = new Counter
         {
-            counter = new Counter
-            {
-                Value = 0
-            };
+            Value = 0
+        };
 
-            _db.Counters.Add(counter);
-        }
-
-        counter.Value++;
-
-        await _db.SaveChangesAsync();
-
-        return Ok(counter);
+        _db.Counters.Add(counter);
     }
+
+    counter.Value++;
+
+    await _db.SaveChangesAsync();
+
+    return Ok(counter);
+}
+
 }

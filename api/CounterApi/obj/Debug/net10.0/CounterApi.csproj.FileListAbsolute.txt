@@ -16,7 +16,6 @@ C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\ne
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\CounterApi.csproj.CoreCompileInputs.cache
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\CounterApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\CounterApi.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\CounterApi.sourcelink.json
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\rusha\OneDrive\Documents\dotnet-counter-app\api\CounterApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
