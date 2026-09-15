@@ -1,0 +1,14 @@
+# .NET
+**/bin/
+**/obj/
+
+# Node
+frontend/node_modules/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# VS Code
+.vscode/
