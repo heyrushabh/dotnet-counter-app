@@ -28,8 +28,7 @@ jobs:
 
       - name: Build API
         run: dotnet build --no-restore
-
-build-frontend:
+  build-frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
