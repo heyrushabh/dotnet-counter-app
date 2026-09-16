@@ -33,7 +33,7 @@ build-frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: frontend/CounterFrontend
+        working-directory: frontend
 
     steps:
       - name: Checkout code
