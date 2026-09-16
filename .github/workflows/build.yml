@@ -1,4 +1,4 @@
-name: Build Application
+name: Build Api
 on:
   push:
     branches:
@@ -48,3 +48,29 @@ jobs:
 
       - name: Build Frontend
         run: npm run build
+
+  build-application-image:
+    runs-on: ubuntu-latest
+    needs: build-api
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Build API Docker Image
+      run: |
+        docker build \
+        -t counter-api \
+        ./api/CounterApi
+
+  build-frontend-image:
+    runs-on: ubuntu-latest
+    needs: build-frontend
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Build Frontend Docker Image
+      run: |
+        docker build \
+        -t counter-frontend \
+        ./frontend
