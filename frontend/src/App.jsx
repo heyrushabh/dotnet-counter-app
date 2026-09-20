@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 function App() {
   const [count, setCount] = useState(0);
 
   const loadCount = async () => {
-    const response = await fetch("http://localhost:5007/Counter");
+    const response = await fetch(`${API_URL}/Counter`);
 
     const data = await response.json();
 
@@ -13,7 +15,7 @@ function App() {
 
   const increment = async () => {
     await fetch(
-      "http://localhost:5007/Counter/increment",
+      `${API_URL}/Counter/increment`,
       {
         method: "POST"
       }
