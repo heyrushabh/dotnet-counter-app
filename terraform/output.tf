@@ -13,3 +13,11 @@ output "ec2_public_ip" {
 output "ec2_public_dns" {
   value = aws_instance.main.public_dns
 }
+
+output "api_ecr_url" {
+  value = aws_ecr_repository.api.repository_url
+}
+
+output "frontend_ecr_url" {
+  value = aws_ecr_repository.Frontend.repository_url
+}
