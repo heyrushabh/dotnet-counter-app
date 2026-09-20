@@ -20,7 +20,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "main" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
   subnet_id = aws_subnet.public.id
   associate_public_ip_address = true
 

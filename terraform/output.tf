@@ -19,5 +19,5 @@ output "api_ecr_url" {
 }
 
 output "frontend_ecr_url" {
-  value = aws_ecr_repository.Frontend.repository_url
+  value = aws_ecr_repository.frontend.repository_url
 }
