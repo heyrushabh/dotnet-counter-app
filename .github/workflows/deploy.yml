@@ -1,17 +1,37 @@
-script: |
-  cd ~/dotnet-counter-app
+name: Deploy to EC2
 
-  git pull
+on:
+  workflow_dispatch:
 
-  aws ecr get-login-password \
-    --region ap-southeast-2 \
-    | docker login \
-      --username AWS \
-      --password-stdin \
-      123677443445.dkr.ecr.ap-southeast-2.amazonaws.com
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-  docker compose pull
+    environment: Production
 
-  docker compose up -d
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
 
-  docker image prune -f
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+
+          script: |
+            cd ~/dotnet-counter-app
+
+            git pull
+
+            aws ecr get-login-password \
+              --region ap-southeast-2 \
+              | docker login \
+              --username AWS \
+              --password-stdin \
+              123677443445.dkr.ecr.ap-southeast-2.amazonaws.com
+
+            docker compose pull
+
+            docker compose up -d
+
+            docker image prune -f
