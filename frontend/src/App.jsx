@@ -25,20 +25,24 @@ function App() {
   };
 
   useEffect(() => {
-    loadCount();
-  }, []);
+  document.title = `${count} 🚀 Deployments`;
+}, [count]);
 
-  return (
-    <div>
-      <h1>Counter App v1</h1>
+return (
+  <div className="app">
+    <h1>🚀 HeyRushabh.dev</h1>
 
-      <h2>Current Count: {count}</h2>
+    <p className="subtitle">
+      Terraform • AWS • Docker • CI/CD
+    </p>
 
-      <button onClick={increment}>
-        Increment
-      </button>
-    </div>
-  );
+    <div className="count">{count}</div>
+
+    <button onClick={incrementCount}>
+      Deploy To Production 🚀
+    </button>
+  </div>
+);
 }
 
 export default App;
