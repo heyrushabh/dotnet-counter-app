@@ -39,7 +39,29 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-    db.Database.Migrate();
+    const int maxRetries = 10;
+
+    for (int retry = 1; retry <= maxRetries; retry++)
+    {
+        try
+        {
+            db.Database.Migrate();
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(
+                $"Migration attempt {retry}/{maxRetries} failed: {ex.Message}");
+
+            if (retry == maxRetries)
+            {
+                throw;
+            }
+
+            Thread.Sleep(TimeSpan.FromSeconds(10));
+        }
+    }
 }
+
 
 app.Run();
