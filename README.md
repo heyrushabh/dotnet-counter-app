@@ -73,7 +73,6 @@ ECR repositories
 
 ```text
 Region:              ap-southeast-2
-EC2 Elastic IP:      32.237.31.64
 API ECR repository:  dotnet-counter-api
 Web ECR repository:  dotnet-counter-frontend
 EC2 IAM role:        counter-app-ec2-ecr-role
