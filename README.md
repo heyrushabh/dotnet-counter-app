@@ -1,4 +1,4 @@
-# HeyRushabh.dev - Operations and Architecture Guide
+# CounterApp- Operations and Architecture Guide
 
 ## 1. Application URL
 
@@ -426,4 +426,4 @@ Automated rollback strategy
 
 ## One-Sentence Project Summary
 
-HeyRushabh.dev is a React and .NET 10 application backed by PostgreSQL, containerized with Docker, provisioned through Terraform, built and deployed by GitHub Actions, stored in AWS ECR, hosted on EC2 behind Nginx, and exposed through Cloudflare DNS and HTTPS.
+CounterApp is a React and .NET 10 application backed by PostgreSQL, containerized with Docker, provisioned through Terraform, built and deployed by GitHub Actions, stored in AWS ECR, hosted on EC2 behind Nginx, and exposed through Cloudflare DNS and HTTPS.
