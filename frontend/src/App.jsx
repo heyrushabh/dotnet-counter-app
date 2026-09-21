@@ -24,21 +24,24 @@ function App() {
     await loadCount();
   };
 
-  useEffect(() => {
+useEffect(() => {
+  loadCount();
+}, []);
+
+useEffect(() => {
   document.title = `${count} 🚀 Deployments`;
 }, [count]);
-
 return (
   <div className="app">
-    <h1>🚀 HeyRushabh.dev</h1>
+    <h1>🚀 HeyRushabh.Dev</h1>
 
     <p className="subtitle">
-      Terraform • AWS • Docker • CI/CD
+      React • .NET 10 • PostgreSQL • Docker • Nginx • GitHub Actions • AWS • Terraform
     </p>
 
     <div className="count">{count}</div>
 
-    <button onClick={incrementCount}>
+    <button onClick={increment}>
       Deploy To Production 🚀
     </button>
   </div>
