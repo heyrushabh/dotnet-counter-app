@@ -19,5 +19,9 @@ output "api_ecr_url" {
 }
 
 output "frontend_ecr_url" {
-  value = aws_ecr_repository.frontend.repository_url
+  value = aws_ecr_repository.Frontend.repository_url
+}
+
+output "elastic_ip" {
+  value = aws_eip.ec2.public_ip
 }

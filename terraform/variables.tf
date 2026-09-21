@@ -9,6 +9,6 @@ variable "project_name" {
 }
 
 variable "key_pair_name" {
-description = "AWS EC2 key pair name"
-type = string
+  description = "AWS EC2 key pair name"
+  type        = string
 }

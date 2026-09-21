@@ -37,3 +37,19 @@ resource "aws_instance" "main" {
     }
   )
 }
+
+resource "aws_eip" "ec2" {
+  domain = "vpc"
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${var.project_name}-eip"
+    }
+  )
+}
+
+resource "aws_eip_association" "ec2" {
+  allocation_id = aws_eip.ec2.id
+  instance_id   = aws_instance.main.id
+}

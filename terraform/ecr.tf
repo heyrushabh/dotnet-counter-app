@@ -8,7 +8,7 @@ resource "aws_ecr_repository" "api" {
   tags = local.common_tags
 }
 
-resource "aws_ecr_repository" "frontend" {
+resource "aws_ecr_repository" "Frontend" {
   name = "dotnet-counter-frontend"
 
   image_scanning_configuration {
