@@ -1,8 +1,80 @@
 # CounterApp- Operations and Architecture Guide
+```mermaid
+flowchart TB
+
+    %% USERS
+    User["👤 User Browser<br/>heyrushabh.dev"]
+    
+    %% EDGE
+    Cloudflare["☁️ Cloudflare<br/>DNS + HTTPS"]
+
+    %% AWS
+    EIP["🌐 Elastic IP<br/>32.237.31.64"]
+
+    EC2["🖥️ AWS EC2<br/>Ubuntu Server"]
+
+    %% DOCKER HOST
+    subgraph DockerCompose["🐳 Docker Compose"]
+
+        Nginx["🔀 Nginx Reverse Proxy<br/>Port 80"]
+
+        React["⚛️ React Frontend<br/>Vite"]
+
+        API["🧩 .NET 10 API<br/>Entity Framework Core"]
+
+        Postgres["🐘 PostgreSQL 17"]
+
+        Volume["💾 Docker Volume<br/>Persistent Data"]
+
+        Nginx --> React
+        Nginx --> API
+        API --> Postgres
+        Postgres --> Volume
+    end
+
+    %% TRAFFIC FLOW
+    User -->|HTTPS| Cloudflare
+    Cloudflare -->|HTTP| EIP
+    EIP --> EC2
+    EC2 --> Nginx
+
+    %% DEVOPS SECTION
+    subgraph CICD["🚀 CI/CD Pipeline"]
+
+        Dev["👨‍💻 Developer"]
+
+        Github["📦 GitHub Repository"]
+
+        Actions["⚙️ GitHub Actions"]
+
+        ECR["📦 AWS ECR<br/>Frontend & API Images"]
+
+        Dev --> Github
+        Github --> Actions
+        Actions -->|Build Docker Images| ECR
+    end
+
+    %% DEPLOYMENT FLOW
+    ECR -->|docker compose pull| EC2
+
+    %% INFRASTRUCTURE
+    Terraform["🏗️ Terraform"]
+
+    Terraform -.->|Manages| EC2
+    Terraform -.->|Manages| EIP
+    Terraform -.->|Manages| ECR
+
+    %% SECURITY
+    IAM["🔐 IAM Role<br/>counter-app-ec2-ecr-role"]
+
+    IAM -.->|Allows ECR Pulls| EC2
+```
 
 ## 1. Application URL
 
 - Website: `https://heyrushabh.dev`
+- Website: `https://www.heyrushabh.dev`
+
 
 ## 2. How the Application Works
 
