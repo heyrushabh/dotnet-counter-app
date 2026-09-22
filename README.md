@@ -9,7 +9,7 @@ flowchart TB
     Cloudflare["☁️ Cloudflare<br/>DNS + HTTPS"]
 
     %% AWS
-    EIP["🌐 Elastic IP<br/>32.237.31.64"]
+    EIP["🌐 Elastic IP<br/>"]
 
     EC2["🖥️ AWS EC2<br/>Ubuntu Server"]
 
