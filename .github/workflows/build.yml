@@ -59,14 +59,23 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2    
     - name: Build and Push API Image
       run: |
+        IMAGE_TAG=${GITHUB_SHA::7}
+
         docker build -t dotnet-counter-api ./api/CounterApi
+
+        docker tag \
+          dotnet-counter-api:latest \
+          123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-api:$IMAGE_TAG
 
         docker tag \
           dotnet-counter-api:latest \
           123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-api:latest
 
         docker push \
-        123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-api:latest
+          123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-api:$IMAGE_TAG
+        
+        docker push \
+          123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-api:latest
 
   build-frontend-image:
     runs-on: ubuntu-latest
@@ -85,11 +94,19 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2
     - name: Build and Push Frontend Image
       run: |
+        IMAGE_TAG=${GITHUB_SHA::7}
         docker build -t dotnet-counter-frontend ./frontend
 
         docker tag \
           dotnet-counter-frontend:latest \
+          123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-frontend:$IMAGE_TAG
+
+        docker tag \
+          dotnet-counter-frontend:latest \
           123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-frontend:latest
+
+        docker push \
+          123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-frontend:$IMAGE_TAG
 
         docker push \
           123677443445.dkr.ecr.ap-southeast-2.amazonaws.com/dotnet-counter-frontend:latest
